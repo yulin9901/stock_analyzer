@@ -1,0 +1,22 @@
+# Configuration for Stock Analyzer App
+# Copy this file to config.py and fill in your details.
+
+# TianAPI Key for fetching hot topics
+TIANAPI_KEY = "YOUR_TIANAPI_KEY_HERE"
+
+# OpenAI API Key for ChatGPT decisions
+OPENAI_API_KEY = "YOUR_OPENAI_API_KEY_HERE"
+
+# MySQL Database Configuration
+DB_HOST = "localhost"
+DB_PORT = 3306
+DB_USER = "your_db_user"
+DB_PASSWORD = "your_db_password"
+DB_NAME = "stock_analysis"
+
+# AKShare (No specific key, but good to note)
+# Ensure network access for AKShare to fetch data.
+
+# YahooFinance API (via Datasource module)
+# No specific key needed here as it's accessed through the system's ApiClient
+
