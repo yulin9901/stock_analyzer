@@ -20,3 +20,15 @@ DB_NAME = "stock_analysis"
 # YahooFinance API (via Datasource module)
 # No specific key needed here as it's accessed through the system's ApiClient
 
+# 定时任务配置
+# 是否在非交易日运行任务（周末和节假日）
+RUN_ON_NON_TRADING_DAYS = False
+
+# 每小时数据收集时间（分钟）
+# 例如：设置为15，表示在每小时的第15分钟运行数据收集任务
+HOURLY_COLLECTION_MINUTE = 0
+
+# 开盘前准备时间（小时:分钟）
+# 在交易日的这个时间点运行数据汇总和获取买入建议
+MARKET_OPEN_PREP_TIME = "09:00"
+

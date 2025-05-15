@@ -18,7 +18,7 @@ def fetch_hot_topics_data(api_key):
     }
     print(f"Fetching hot topics from TianAPI with URL: {TIANAPI_FINANCE_NEWS_URL} and params: {params}")
     try:
-        response = requests.get(TIANAPI_FINANCE_NEWS_URL, params=params, timeout=10)
+        response = requests.get(TIANAPI_FINANCE_NEWS_URL, params=params, timeout=10, col=135)
         print(f"Response status code: {response.status_code}")
         response.raise_for_status()  # Raise an exception for HTTP errors
         data = response.json()

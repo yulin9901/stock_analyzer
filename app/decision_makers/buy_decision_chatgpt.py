@@ -19,7 +19,7 @@ def get_buy_decision_from_chatgpt(db_config, openai_api_key, target_date_str=Non
     else:
         target_date = datetime.date.today()
 
-    print(f"Attempting to get ChatGPT buy decision for {target_date.strftime("%Y-%m-%d")}...")
+    print(f"Attempting to get ChatGPT buy decision for {target_date.strftime('%Y-%m-%d')}...")
 
     daily_summary_id = None
     daily_summary_content = None
@@ -53,7 +53,7 @@ def get_buy_decision_from_chatgpt(db_config, openai_api_key, target_date_str=Non
 
     # Prepare prompt for ChatGPT
     prompt = f"""
-    Analyze the following Chinese stock market data for {target_date.strftime("%Y-%m-%d")} and provide a buy recommendation for the upcoming trading session.
+    Analyze the following Chinese stock market data for {target_date.strftime('%Y-%m-%d')} and provide a buy recommendation for the upcoming trading session.
     If recommending a stock, specify the stock code, stock name, a suggested buy price, and a brief reasoning.
     Format your primary recommendation clearly. If no strong buy signal, state that.
 
@@ -108,7 +108,7 @@ def get_buy_decision_from_chatgpt(db_config, openai_api_key, target_date_str=Non
             try:
                 parsed_decision["buy_price_suggestion"] = float(line.split(":", 1)[1].strip().replace(",","")) # Handle comma in price
             except ValueError:
-                print(f"Warning: Could not parse buy price from ChatGPT: {line.split(":", 1)[1].strip()}")
+                print(f"Warning: Could not parse buy price from ChatGPT: {line.split(':', 1)[1].strip()}")
         elif line.startswith("Reasoning:"):
             parsed_decision["reasoning"] = line.split(":", 1)[1].strip()
 
