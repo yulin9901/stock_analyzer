@@ -134,3 +134,15 @@ CREATE TABLE IF NOT EXISTS backtest_results (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '回测时间'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='存储策略回测结果';
 
+-- 9. 创建交易策略总结表 (trading_strategy_summaries)
+CREATE TABLE IF NOT EXISTS `trading_strategy_summaries` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `decision_timestamp` DATETIME NOT NULL,
+  `daily_summary_id` INT NOT NULL,
+  `summary_content` TEXT NOT NULL,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `idx_daily_summary_id` (`daily_summary_id`),
+  KEY `idx_decision_timestamp` (`decision_timestamp`),
+  CONSTRAINT `fk_summary_daily_summary` FOREIGN KEY (`daily_summary_id`) REFERENCES `daily_summaries` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

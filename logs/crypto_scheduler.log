@@ -1,189 +1,162 @@
-2025-05-23 14:13:14,771 - crypto_trading - INFO - 启动加密货币交易系统定时任务调度器...
-2025-05-23 14:13:14,781 - crypto_scheduler - INFO - 成功加载配置
-2025-05-23 14:13:14,781 - crypto_scheduler - INFO - 定时任务计划已设置: 每小时0分收集数据, 00:05生成每日策略
-2025-05-23 14:13:14,782 - crypto_scheduler - INFO - 调度器线程已启动
-2025-05-23 14:13:14,782 - crypto_scheduler - INFO - 调度器已启动
-2025-05-23 14:28:23,333 - crypto_trading - INFO - 接收到停止信号，正在停止调度器...
-2025-05-23 14:36:45,049 - crypto_trading - INFO - 运行任务: collect_crypto_news
-2025-05-23 14:36:45,050 - crypto_tasks - INFO - 开始收集加密货币热点新闻...
-2025-05-23 14:36:45,119 - crypto_news_collector - ERROR - 天行数据API返回错误: key错误或为空
-2025-05-23 14:37:06,185 - crypto_news_collector - ERROR - 请求CoinDesk RSS失败: HTTPSConnectionPool(host='www.coindesk.com', port=443): Max retries exceeded with url: /arc/outboundfeeds/rss/ (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x0000026081F515A0>, 'Connection to www.coindesk.com timed out. (connect timeout=None)'))
-2025-05-23 14:37:06,186 - crypto_news_collector - INFO - 总共获取了0条加密货币热点话题
-2025-05-23 14:37:06,187 - crypto_tasks - WARNING - 未能获取加密货币热点新闻或返回为空
-2025-05-23 14:37:06,187 - crypto_trading - WARNING - 任务 collect_crypto_news 失败或未完成
-2025-05-23 14:38:02,561 - crypto_trading - INFO - 运行任务: collect_crypto_market_data
-2025-05-23 14:38:02,562 - crypto_tasks - INFO - 开始收集加密货币市场数据...
-2025-05-23 14:38:03,698 - binance_data_collector - INFO - 成功连接到Binance API，服务器时间: 2025-05-23 14:38:04.958000
-2025-05-23 14:38:06,183 - binance_data_collector - INFO - 成功获取BTCUSDT市场资金流向数据
-2025-05-23 14:38:07,636 - binance_data_collector - INFO - 成功获取ETHUSDT市场资金流向数据
-2025-05-23 14:38:08,878 - binance_data_collector - INFO - 成功获取SOLUSDT市场资金流向数据
-2025-05-23 14:38:09,050 - binance_data_collector - INFO - 成功存储了3条市场资金流向数据
-2025-05-23 14:38:09,053 - crypto_tasks - INFO - 成功收集并存储了 3 条市场资金流向数据
-2025-05-23 14:38:09,548 - binance_data_collector - INFO - 成功获取BTCUSDT 1m周期K线数据，共100条
-2025-05-23 14:38:09,839 - binance_data_collector - INFO - 成功存储了100条K线数据
-2025-05-23 14:38:09,841 - crypto_tasks - INFO - 成功收集并存储了 100 条 BTCUSDT 1m K线数据
-2025-05-23 14:38:10,338 - binance_data_collector - INFO - 成功获取BTCUSDT 5m周期K线数据，共100条
-2025-05-23 14:38:10,584 - binance_data_collector - INFO - 成功存储了100条K线数据
-2025-05-23 14:38:10,586 - crypto_tasks - INFO - 成功收集并存储了 100 条 BTCUSDT 5m K线数据
-2025-05-23 14:38:11,216 - binance_data_collector - INFO - 成功获取BTCUSDT 1h周期K线数据，共378条
-2025-05-23 14:38:11,898 - binance_data_collector - INFO - 成功存储了378条K线数据
-2025-05-23 14:38:11,901 - crypto_tasks - INFO - 成功收集并存储了 378 条 BTCUSDT 1h K线数据
-2025-05-23 14:38:12,187 - binance_data_collector - INFO - 成功获取BTCUSDT 1d周期K线数据，共17条
-2025-05-23 14:38:12,283 - binance_data_collector - INFO - 成功存储了17条K线数据
-2025-05-23 14:38:12,285 - crypto_tasks - INFO - 成功收集并存储了 17 条 BTCUSDT 1d K线数据
-2025-05-23 14:38:12,573 - binance_data_collector - INFO - 成功获取ETHUSDT 1m周期K线数据，共100条
-2025-05-23 14:38:12,877 - binance_data_collector - INFO - 成功存储了100条K线数据
-2025-05-23 14:38:12,880 - crypto_tasks - INFO - 成功收集并存储了 100 条 ETHUSDT 1m K线数据
-2025-05-23 14:38:13,172 - binance_data_collector - INFO - 成功获取ETHUSDT 5m周期K线数据，共100条
-2025-05-23 14:38:13,397 - binance_data_collector - INFO - 成功存储了100条K线数据
-2025-05-23 14:38:13,399 - crypto_tasks - INFO - 成功收集并存储了 100 条 ETHUSDT 5m K线数据
-2025-05-23 14:38:14,026 - binance_data_collector - INFO - 成功获取ETHUSDT 1h周期K线数据，共378条
-2025-05-23 14:38:14,709 - binance_data_collector - INFO - 成功存储了378条K线数据
-2025-05-23 14:38:14,712 - crypto_tasks - INFO - 成功收集并存储了 378 条 ETHUSDT 1h K线数据
-2025-05-23 14:38:15,201 - binance_data_collector - INFO - 成功获取ETHUSDT 1d周期K线数据，共17条
-2025-05-23 14:38:15,273 - binance_data_collector - INFO - 成功存储了17条K线数据
-2025-05-23 14:38:15,276 - crypto_tasks - INFO - 成功收集并存储了 17 条 ETHUSDT 1d K线数据
-2025-05-23 14:38:15,771 - binance_data_collector - INFO - 成功获取SOLUSDT 1m周期K线数据，共100条
-2025-05-23 14:38:16,002 - binance_data_collector - INFO - 成功存储了100条K线数据
-2025-05-23 14:38:16,005 - crypto_tasks - INFO - 成功收集并存储了 100 条 SOLUSDT 1m K线数据
-2025-05-23 14:38:16,502 - binance_data_collector - INFO - 成功获取SOLUSDT 5m周期K线数据，共100条
-2025-05-23 14:38:16,732 - binance_data_collector - INFO - 成功存储了100条K线数据
-2025-05-23 14:38:16,736 - crypto_tasks - INFO - 成功收集并存储了 100 条 SOLUSDT 5m K线数据
-2025-05-23 14:38:17,157 - binance_data_collector - INFO - 成功获取SOLUSDT 1h周期K线数据，共377条
-2025-05-23 14:38:17,823 - binance_data_collector - INFO - 成功存储了377条K线数据
-2025-05-23 14:38:17,825 - crypto_tasks - INFO - 成功收集并存储了 377 条 SOLUSDT 1h K线数据
-2025-05-23 14:38:18,112 - binance_data_collector - INFO - 成功获取SOLUSDT 1d周期K线数据，共17条
-2025-05-23 14:38:18,191 - binance_data_collector - INFO - 成功存储了17条K线数据
-2025-05-23 14:38:18,192 - crypto_tasks - INFO - 成功收集并存储了 17 条 SOLUSDT 1d K线数据
-2025-05-23 14:38:18,193 - crypto_trading - INFO - 任务 collect_crypto_market_data 成功完成
-2025-05-23 14:39:00,370 - crypto_trading - INFO - 运行任务: summarize_crypto_daily_data
-2025-05-23 14:39:00,370 - crypto_tasks - INFO - 开始汇总 2025-05-23 的加密货币数据...
-2025-05-23 14:39:00,371 - daily_summary_processor - INFO - 开始2025-05-23的加密货币每日数据汇总...
-2025-05-23 14:39:00,412 - daily_summary_processor - ERROR - 每日汇总过程中数据库错误: Object of type Decimal is not JSON serializable
-2025-05-23 14:39:00,412 - crypto_tasks - WARNING - 汇总 2025-05-23 的加密货币数据失败或未完成
-2025-05-23 14:39:00,413 - crypto_trading - WARNING - 任务 summarize_crypto_daily_data 失败或未完成
-2025-05-23 14:52:10,948 - crypto_trading - INFO - 运行任务: collect_crypto_market_data
-2025-05-23 14:52:10,948 - crypto_tasks - INFO - 开始收集加密货币市场数据...
-2025-05-23 14:52:11,876 - binance_data_collector - INFO - 成功连接到Binance API，服务器时间: 2025-05-23 14:52:13.192000
-2025-05-23 14:52:13,248 - binance_data_collector - INFO - 成功获取BTCUSDT市场资金流向数据
-2025-05-23 14:52:13,913 - binance_data_collector - INFO - 成功获取ETHUSDT市场资金流向数据
-2025-05-23 14:52:14,719 - binance_data_collector - INFO - 成功获取SOLUSDT市场资金流向数据
-2025-05-23 14:52:14,936 - binance_data_collector - INFO - 成功存储了3条市场资金流向数据
-2025-05-23 14:52:14,940 - crypto_tasks - INFO - 成功收集并存储了 3 条市场资金流向数据
-2025-05-23 14:52:15,179 - binance_data_collector - INFO - 成功获取BTCUSDT 1m周期K线数据，共100条
-2025-05-23 14:52:15,405 - binance_data_collector - INFO - 成功存储了100条K线数据
-2025-05-23 14:52:15,407 - crypto_tasks - INFO - 成功收集并存储了 100 条 BTCUSDT 1m K线数据
-2025-05-23 14:52:15,650 - binance_data_collector - INFO - 成功获取BTCUSDT 5m周期K线数据，共100条
-2025-05-23 14:52:15,913 - binance_data_collector - INFO - 成功存储了100条K线数据
-2025-05-23 14:52:15,916 - crypto_tasks - INFO - 成功收集并存储了 100 条 BTCUSDT 5m K线数据
-2025-05-23 14:52:16,244 - binance_data_collector - INFO - 成功获取BTCUSDT 1h周期K线数据，共378条
-2025-05-23 14:52:16,923 - binance_data_collector - INFO - 成功存储了378条K线数据
-2025-05-23 14:52:16,925 - crypto_tasks - INFO - 成功收集并存储了 378 条 BTCUSDT 1h K线数据
-2025-05-23 14:52:17,171 - binance_data_collector - INFO - 成功获取BTCUSDT 1d周期K线数据，共17条
-2025-05-23 14:52:17,268 - binance_data_collector - INFO - 成功存储了17条K线数据
-2025-05-23 14:52:17,270 - crypto_tasks - INFO - 成功收集并存储了 17 条 BTCUSDT 1d K线数据
-2025-05-23 14:52:17,507 - binance_data_collector - INFO - 成功获取ETHUSDT 1m周期K线数据，共100条
-2025-05-23 14:52:17,755 - binance_data_collector - INFO - 成功存储了100条K线数据
-2025-05-23 14:52:17,758 - crypto_tasks - INFO - 成功收集并存储了 100 条 ETHUSDT 1m K线数据
-2025-05-23 14:52:18,114 - binance_data_collector - INFO - 成功获取ETHUSDT 5m周期K线数据，共100条
-2025-05-23 14:52:18,356 - binance_data_collector - INFO - 成功存储了100条K线数据
-2025-05-23 14:52:18,359 - crypto_tasks - INFO - 成功收集并存储了 100 条 ETHUSDT 5m K线数据
-2025-05-23 14:52:18,689 - binance_data_collector - INFO - 成功获取ETHUSDT 1h周期K线数据，共378条
-2025-05-23 14:52:19,385 - binance_data_collector - INFO - 成功存储了378条K线数据
-2025-05-23 14:52:19,387 - crypto_tasks - INFO - 成功收集并存储了 378 条 ETHUSDT 1h K线数据
-2025-05-23 14:52:19,620 - binance_data_collector - INFO - 成功获取ETHUSDT 1d周期K线数据，共17条
-2025-05-23 14:52:19,690 - binance_data_collector - INFO - 成功存储了17条K线数据
-2025-05-23 14:52:19,692 - crypto_tasks - INFO - 成功收集并存储了 17 条 ETHUSDT 1d K线数据
-2025-05-23 14:52:19,928 - binance_data_collector - INFO - 成功获取SOLUSDT 1m周期K线数据，共100条
-2025-05-23 14:52:20,164 - binance_data_collector - INFO - 成功存储了100条K线数据
-2025-05-23 14:52:20,165 - crypto_tasks - INFO - 成功收集并存储了 100 条 SOLUSDT 1m K线数据
-2025-05-23 14:52:20,399 - binance_data_collector - INFO - 成功获取SOLUSDT 5m周期K线数据，共100条
-2025-05-23 14:52:20,614 - binance_data_collector - INFO - 成功存储了100条K线数据
-2025-05-23 14:52:20,616 - crypto_tasks - INFO - 成功收集并存储了 100 条 SOLUSDT 5m K线数据
-2025-05-23 14:52:20,910 - binance_data_collector - INFO - 成功获取SOLUSDT 1h周期K线数据，共377条
-2025-05-23 14:52:21,629 - binance_data_collector - INFO - 成功存储了377条K线数据
-2025-05-23 14:52:21,632 - crypto_tasks - INFO - 成功收集并存储了 377 条 SOLUSDT 1h K线数据
-2025-05-23 14:52:21,864 - binance_data_collector - INFO - 成功获取SOLUSDT 1d周期K线数据，共17条
-2025-05-23 14:52:21,935 - binance_data_collector - INFO - 成功存储了17条K线数据
-2025-05-23 14:52:21,938 - crypto_tasks - INFO - 成功收集并存储了 17 条 SOLUSDT 1d K线数据
-2025-05-23 14:52:21,938 - crypto_trading - INFO - 任务 collect_crypto_market_data 成功完成
-2025-05-23 14:52:26,280 - crypto_trading - INFO - 运行任务: summarize_crypto_daily_data
-2025-05-23 14:52:26,281 - crypto_tasks - INFO - 开始汇总 2025-05-23 的加密货币数据...
-2025-05-23 14:52:26,282 - daily_summary_processor - INFO - 开始2025-05-23的加密货币每日数据汇总...
-2025-05-23 14:52:26,332 - daily_summary_processor - ERROR - 每日汇总过程中数据库错误: Object of type Decimal is not JSON serializable
-2025-05-23 14:52:26,333 - crypto_tasks - WARNING - 汇总 2025-05-23 的加密货币数据失败或未完成
-2025-05-23 14:52:26,333 - crypto_trading - WARNING - 任务 summarize_crypto_daily_data 失败或未完成
-2025-05-23 14:52:33,019 - crypto_trading - INFO - 运行任务: collect_crypto_news
-2025-05-23 14:52:33,019 - crypto_tasks - INFO - 开始收集加密货币热点新闻...
-2025-05-23 14:52:33,020 - crypto_news_collector - WARNING - 未配置CryptoPanic API密钥或使用了占位符，跳过获取CryptoPanic新闻
-2025-05-23 14:52:33,020 - crypto_news_collector - WARNING - 未配置CoinMarketCal API密钥或使用了占位符，跳过获取CoinMarketCal事件
-2025-05-23 14:52:33,020 - crypto_news_collector - INFO - 总共获取了0条加密货币热点话题
-2025-05-23 14:52:33,020 - crypto_tasks - WARNING - 未能获取加密货币热点新闻或返回为空
-2025-05-23 14:52:33,020 - crypto_trading - WARNING - 任务 collect_crypto_news 失败或未完成
-2025-05-23 14:58:22,830 - crypto_trading - INFO - 运行任务: collect_crypto_news
-2025-05-23 14:58:22,831 - crypto_tasks - INFO - 开始收集加密货币热点新闻...
-2025-05-23 14:58:22,831 - crypto_news_collector - WARNING - 未配置CryptoPanic API密钥或使用了占位符，跳过获取CryptoPanic新闻
-2025-05-23 14:58:22,831 - crypto_news_collector - WARNING - 未配置CoinMarketCal API密钥或使用了占位符，跳过获取CoinMarketCal事件
-2025-05-23 14:58:22,832 - crypto_news_collector - INFO - 总共获取了0条加密货币热点话题
-2025-05-23 14:58:22,832 - crypto_tasks - WARNING - 未能获取加密货币热点新闻或返回为空
-2025-05-23 14:58:22,832 - crypto_trading - WARNING - 任务 collect_crypto_news 失败或未完成
-2025-05-23 14:58:36,833 - crypto_trading - INFO - 运行任务: collect_crypto_news
-2025-05-23 14:58:36,833 - crypto_tasks - INFO - 开始收集加密货币热点新闻...
-2025-05-23 14:58:36,835 - crypto_news_collector - WARNING - 未配置CryptoPanic API密钥或使用了占位符，跳过获取CryptoPanic新闻
-2025-05-23 14:58:36,836 - crypto_news_collector - WARNING - 未配置CoinMarketCal API密钥或使用了占位符，跳过获取CoinMarketCal事件
-2025-05-23 14:58:36,836 - crypto_news_collector - INFO - 总共获取了0条加密货币热点话题
-2025-05-23 14:58:36,836 - crypto_tasks - WARNING - 未能获取加密货币热点新闻或返回为空
-2025-05-23 14:58:36,836 - crypto_trading - WARNING - 任务 collect_crypto_news 失败或未完成
-2025-05-23 15:03:40,600 - crypto_trading - INFO - 运行任务: collect_crypto_news
-2025-05-23 15:03:40,601 - crypto_tasks - INFO - 开始收集加密货币热点新闻...
-2025-05-23 15:03:40,602 - crypto_news_collector - WARNING - 未配置CryptoPanic API密钥或使用了占位符，跳过获取CryptoPanic新闻
-2025-05-23 15:03:43,517 - crypto_news_collector - ERROR - 请求CoinMarketCal API失败: 403 Client Error: Forbidden for url: https://developers.coinmarketcal.com/v1/events?max=30&dateRangeStart=2025-05-23&dateRangeEnd=2025-06-22&showOnly=hot&sortBy=created_desc
-2025-05-23 15:03:43,517 - crypto_news_collector - INFO - 从CoinMarketCal获取了0条事件
-2025-05-23 15:03:43,517 - crypto_news_collector - INFO - 总共获取了0条加密货币热点话题
-2025-05-23 15:03:43,517 - crypto_tasks - WARNING - 未能获取加密货币热点新闻或返回为空
-2025-05-23 15:03:43,517 - crypto_trading - WARNING - 任务 collect_crypto_news 失败或未完成
-2025-05-23 15:12:54,053 - crypto_trading - INFO - 运行任务: collect_crypto_news
-2025-05-23 15:12:54,054 - crypto_tasks - INFO - 开始收集加密货币热点新闻...
-2025-05-23 15:12:55,546 - crypto_news_collector - INFO - 成功从CryptoPanic获取20条加密货币新闻
-2025-05-23 15:12:55,546 - crypto_news_collector - INFO - 从CryptoPanic获取了20条新闻
-2025-05-23 15:12:55,547 - crypto_news_collector - WARNING - 未配置CoinMarketCal API密钥或使用了占位符，跳过获取CoinMarketCal事件
-2025-05-23 15:12:55,547 - crypto_news_collector - INFO - 总共获取了20条加密货币热点话题
-2025-05-23 15:12:55,742 - crypto_news_collector - INFO - 成功存储了20条加密货币新闻
-2025-05-23 15:12:55,745 - crypto_tasks - INFO - 成功收集并存储了 20 条加密货币热点新闻
-2025-05-23 15:12:55,745 - crypto_trading - INFO - 任务 collect_crypto_news 成功完成
-2025-05-23 15:21:12,075 - crypto_trading - INFO - 运行任务: collect_crypto_news
-2025-05-23 15:21:12,076 - crypto_tasks - INFO - 开始收集加密货币热点新闻...
-2025-05-23 15:21:13,284 - crypto_news_collector - INFO - 成功从CryptoPanic获取20条加密货币新闻
-2025-05-23 15:21:13,284 - crypto_news_collector - INFO - 从CryptoPanic获取了20条新闻
-2025-05-23 15:21:13,284 - crypto_news_collector - WARNING - 未配置CoinMarketCal API密钥或使用了占位符，跳过获取CoinMarketCal事件
-2025-05-23 15:21:13,284 - crypto_news_collector - INFO - 总共获取了20条加密货币热点话题
-2025-05-23 15:21:13,463 - crypto_news_collector - INFO - 成功存储了20条加密货币新闻
-2025-05-23 15:21:13,465 - crypto_tasks - INFO - 成功收集并存储了 20 条加密货币热点新闻
-2025-05-23 15:21:13,466 - crypto_trading - INFO - 任务 collect_crypto_news 成功完成
-2025-05-23 15:24:57,811 - crypto_trading - INFO - 运行任务: collect_crypto_news
-2025-05-23 15:24:57,811 - crypto_tasks - INFO - 开始收集加密货币热点新闻...
-2025-05-23 15:24:59,050 - crypto_news_collector - INFO - 成功从CryptoPanic获取20条加密货币新闻
-2025-05-23 15:24:59,050 - crypto_news_collector - INFO - 从CryptoPanic获取了20条新闻
-2025-05-23 15:24:59,050 - crypto_news_collector - WARNING - 未配置CoinMarketCal API密钥或使用了占位符，跳过获取CoinMarketCal事件
-2025-05-23 15:24:59,050 - crypto_news_collector - INFO - 总共获取了20条加密货币热点话题
-2025-05-23 15:24:59,197 - crypto_news_collector - INFO - 成功存储了20条加密货币新闻
-2025-05-23 15:24:59,199 - crypto_tasks - INFO - 成功收集并存储了 20 条加密货币热点新闻
-2025-05-23 15:24:59,199 - crypto_trading - INFO - 任务 collect_crypto_news 成功完成
-2025-05-23 15:26:50,511 - crypto_trading - INFO - 运行任务: collect_crypto_news
-2025-05-23 15:26:50,512 - crypto_tasks - INFO - 开始收集加密货币热点新闻...
-2025-05-23 15:26:51,711 - crypto_news_collector - INFO - 成功从CryptoPanic获取20条加密货币新闻
-2025-05-23 15:26:51,712 - crypto_news_collector - INFO - 从CryptoPanic获取了20条新闻
-2025-05-23 15:26:51,712 - crypto_news_collector - WARNING - 未配置CoinMarketCal API密钥或使用了占位符，跳过获取CoinMarketCal事件
-2025-05-23 15:26:51,712 - crypto_news_collector - INFO - 总共获取了20条加密货币热点话题
-2025-05-23 15:26:51,873 - crypto_news_collector - INFO - 成功存储了20条加密货币新闻
-2025-05-23 15:26:51,875 - crypto_tasks - INFO - 成功收集并存储了 20 条加密货币热点新闻
-2025-05-23 15:26:51,875 - crypto_trading - INFO - 任务 collect_crypto_news 成功完成
-2025-05-23 15:30:38,630 - crypto_trading - INFO - 运行任务: collect_crypto_news
-2025-05-23 15:30:38,630 - crypto_tasks - INFO - 开始收集加密货币热点新闻...
-2025-05-23 15:30:39,747 - crypto_news_collector - INFO - 成功从CryptoPanic获取20条加密货币新闻
-2025-05-23 15:30:39,747 - crypto_news_collector - INFO - 从CryptoPanic获取了20条新闻
-2025-05-23 15:30:39,747 - crypto_news_collector - WARNING - 未配置CoinMarketCal API密钥或使用了占位符，跳过获取CoinMarketCal事件
-2025-05-23 15:30:39,748 - crypto_news_collector - INFO - 总共获取了20条加密货币热点话题
-2025-05-23 15:30:39,992 - crypto_news_collector - INFO - 成功存储了20条加密货币新闻
-2025-05-23 15:30:39,995 - crypto_tasks - INFO - 成功收集并存储了 20 条加密货币热点新闻
-2025-05-23 15:30:39,995 - crypto_trading - INFO - 任务 collect_crypto_news 成功完成
+2025-05-23 17:15:14,945 - crypto_trading - INFO - 运行任务: full_workflow
+2025-05-23 17:15:14,945 - crypto_tasks - INFO - 开始运行 2025-05-23 的完整加密货币工作流程...
+2025-05-23 17:15:14,946 - crypto_tasks - INFO - 开始收集加密货币热点新闻...
+2025-05-23 17:15:15,454 - crypto_news_collector - INFO - 成功从CryptoPanic获取20条加密货币新闻
+2025-05-23 17:15:15,454 - crypto_news_collector - INFO - 从CryptoPanic获取了20条新闻
+2025-05-23 17:15:15,454 - crypto_news_collector - WARNING - 未配置CoinMarketCal API密钥或使用了占位符，跳过获取CoinMarketCal事件
+2025-05-23 17:15:15,454 - crypto_news_collector - INFO - 总共获取了20条加密货币热点话题
+2025-05-23 17:15:15,594 - crypto_news_collector - INFO - 成功存储了20条加密货币新闻
+2025-05-23 17:15:15,596 - crypto_tasks - INFO - 成功收集并存储了 20 条加密货币热点新闻
+2025-05-23 17:15:15,596 - crypto_tasks - INFO - 开始收集加密货币市场数据...
+2025-05-23 17:15:16,684 - binance_data_collector - INFO - 成功连接到Binance API，服务器时间: 2025-05-23 17:15:18.066000
+2025-05-23 17:15:17,987 - binance_data_collector - INFO - 成功获取BTCUSDT市场资金流向数据
+2025-05-23 17:15:18,764 - binance_data_collector - INFO - 成功获取ETHUSDT市场资金流向数据
+2025-05-23 17:15:19,749 - binance_data_collector - INFO - 成功获取SOLUSDT市场资金流向数据
+2025-05-23 17:15:20,953 - binance_data_collector - INFO - 成功获取LINKUSDT市场资金流向数据
+2025-05-23 17:15:22,366 - binance_data_collector - INFO - 成功获取DOGEUSDT市场资金流向数据
+2025-05-23 17:15:23,565 - binance_data_collector - INFO - 成功获取DOTUSDT市场资金流向数据
+2025-05-23 17:15:24,549 - binance_data_collector - INFO - 成功获取FETUSDT市场资金流向数据
+2025-05-23 17:15:25,533 - binance_data_collector - INFO - 成功获取TAOUSDT市场资金流向数据
+2025-05-23 17:15:26,525 - binance_data_collector - INFO - 成功获取INJUSDT市场资金流向数据
+2025-05-23 17:15:26,595 - binance_data_collector - INFO - 成功存储了9条市场资金流向数据
+2025-05-23 17:15:26,597 - crypto_tasks - INFO - 成功收集并存储了 9 条市场资金流向数据
+2025-05-23 17:15:26,862 - binance_data_collector - INFO - 成功获取BTCUSDT 1m周期K线数据，共100条
+2025-05-23 17:15:27,105 - binance_data_collector - INFO - 成功存储了100条K线数据
+2025-05-23 17:15:27,107 - crypto_tasks - INFO - 成功收集并存储了 100 条 BTCUSDT 1m K线数据
+2025-05-23 17:15:27,582 - binance_data_collector - INFO - 成功获取BTCUSDT 5m周期K线数据，共100条
+2025-05-23 17:15:27,814 - binance_data_collector - INFO - 成功存储了100条K线数据
+2025-05-23 17:15:27,816 - crypto_tasks - INFO - 成功收集并存储了 100 条 BTCUSDT 5m K线数据
+2025-05-23 17:15:28,219 - binance_data_collector - INFO - 成功获取BTCUSDT 1h周期K线数据，共381条
+2025-05-23 17:15:28,870 - binance_data_collector - INFO - 成功存储了381条K线数据
+2025-05-23 17:15:28,873 - crypto_tasks - INFO - 成功收集并存储了 381 条 BTCUSDT 1h K线数据
+2025-05-23 17:15:29,129 - binance_data_collector - INFO - 成功获取BTCUSDT 1d周期K线数据，共17条
+2025-05-23 17:15:29,192 - binance_data_collector - INFO - 成功存储了17条K线数据
+2025-05-23 17:15:29,194 - crypto_tasks - INFO - 成功收集并存储了 17 条 BTCUSDT 1d K线数据
+2025-05-23 17:15:29,667 - binance_data_collector - INFO - 成功获取ETHUSDT 1m周期K线数据，共100条
+2025-05-23 17:15:29,877 - binance_data_collector - INFO - 成功存储了100条K线数据
+2025-05-23 17:15:29,880 - crypto_tasks - INFO - 成功收集并存储了 100 条 ETHUSDT 1m K线数据
+2025-05-23 17:15:30,363 - binance_data_collector - INFO - 成功获取ETHUSDT 5m周期K线数据，共100条
+2025-05-23 17:15:30,606 - binance_data_collector - INFO - 成功存储了100条K线数据
+2025-05-23 17:15:30,609 - crypto_tasks - INFO - 成功收集并存储了 100 条 ETHUSDT 5m K线数据
+2025-05-23 17:15:31,229 - binance_data_collector - INFO - 成功获取ETHUSDT 1h周期K线数据，共381条
+2025-05-23 17:15:31,995 - binance_data_collector - INFO - 成功存储了381条K线数据
+2025-05-23 17:15:31,998 - crypto_tasks - INFO - 成功收集并存储了 381 条 ETHUSDT 1h K线数据
+2025-05-23 17:15:32,257 - binance_data_collector - INFO - 成功获取ETHUSDT 1d周期K线数据，共17条
+2025-05-23 17:15:32,345 - binance_data_collector - INFO - 成功存储了17条K线数据
+2025-05-23 17:15:32,348 - crypto_tasks - INFO - 成功收集并存储了 17 条 ETHUSDT 1d K线数据
+2025-05-23 17:15:32,609 - binance_data_collector - INFO - 成功获取SOLUSDT 1m周期K线数据，共100条
+2025-05-23 17:15:32,862 - binance_data_collector - INFO - 成功存储了100条K线数据
+2025-05-23 17:15:32,865 - crypto_tasks - INFO - 成功收集并存储了 100 条 SOLUSDT 1m K线数据
+2025-05-23 17:15:33,133 - binance_data_collector - INFO - 成功获取SOLUSDT 5m周期K线数据，共100条
+2025-05-23 17:15:33,377 - binance_data_collector - INFO - 成功存储了100条K线数据
+2025-05-23 17:15:33,381 - crypto_tasks - INFO - 成功收集并存储了 100 条 SOLUSDT 5m K线数据
+2025-05-23 17:15:33,783 - binance_data_collector - INFO - 成功获取SOLUSDT 1h周期K线数据，共380条
+2025-05-23 17:15:34,513 - binance_data_collector - INFO - 成功存储了380条K线数据
+2025-05-23 17:15:34,515 - crypto_tasks - INFO - 成功收集并存储了 380 条 SOLUSDT 1h K线数据
+2025-05-23 17:15:34,992 - binance_data_collector - INFO - 成功获取SOLUSDT 1d周期K线数据，共17条
+2025-05-23 17:15:35,106 - binance_data_collector - INFO - 成功存储了17条K线数据
+2025-05-23 17:15:35,109 - crypto_tasks - INFO - 成功收集并存储了 17 条 SOLUSDT 1d K线数据
+2025-05-23 17:15:35,374 - binance_data_collector - INFO - 成功获取LINKUSDT 1m周期K线数据，共100条
+2025-05-23 17:15:35,668 - binance_data_collector - INFO - 成功存储了100条K线数据
+2025-05-23 17:15:35,671 - crypto_tasks - INFO - 成功收集并存储了 100 条 LINKUSDT 1m K线数据
+2025-05-23 17:15:35,935 - binance_data_collector - INFO - 成功获取LINKUSDT 5m周期K线数据，共100条
+2025-05-23 17:15:36,159 - binance_data_collector - INFO - 成功存储了100条K线数据
+2025-05-23 17:15:36,161 - crypto_tasks - INFO - 成功收集并存储了 100 条 LINKUSDT 5m K线数据
+2025-05-23 17:15:36,747 - binance_data_collector - INFO - 成功获取LINKUSDT 1h周期K线数据，共380条
+2025-05-23 17:15:37,433 - binance_data_collector - INFO - 成功存储了380条K线数据
+2025-05-23 17:15:37,435 - crypto_tasks - INFO - 成功收集并存储了 380 条 LINKUSDT 1h K线数据
+2025-05-23 17:15:37,905 - binance_data_collector - INFO - 成功获取LINKUSDT 1d周期K线数据，共17条
+2025-05-23 17:15:37,976 - binance_data_collector - INFO - 成功存储了17条K线数据
+2025-05-23 17:15:37,978 - crypto_tasks - INFO - 成功收集并存储了 17 条 LINKUSDT 1d K线数据
+2025-05-23 17:15:38,454 - binance_data_collector - INFO - 成功获取DOGEUSDT 1m周期K线数据，共100条
+2025-05-23 17:15:38,688 - binance_data_collector - INFO - 成功存储了100条K线数据
+2025-05-23 17:15:38,690 - crypto_tasks - INFO - 成功收集并存储了 100 条 DOGEUSDT 1m K线数据
+2025-05-23 17:15:38,953 - binance_data_collector - INFO - 成功获取DOGEUSDT 5m周期K线数据，共100条
+2025-05-23 17:15:39,142 - binance_data_collector - INFO - 成功存储了100条K线数据
+2025-05-23 17:15:39,144 - crypto_tasks - INFO - 成功收集并存储了 100 条 DOGEUSDT 5m K线数据
+2025-05-23 17:15:39,754 - binance_data_collector - INFO - 成功获取DOGEUSDT 1h周期K线数据，共380条
+2025-05-23 17:15:40,431 - binance_data_collector - INFO - 成功存储了380条K线数据
+2025-05-23 17:15:40,434 - crypto_tasks - INFO - 成功收集并存储了 380 条 DOGEUSDT 1h K线数据
+2025-05-23 17:15:40,693 - binance_data_collector - INFO - 成功获取DOGEUSDT 1d周期K线数据，共17条
+2025-05-23 17:15:40,761 - binance_data_collector - INFO - 成功存储了17条K线数据
+2025-05-23 17:15:40,763 - crypto_tasks - INFO - 成功收集并存储了 17 条 DOGEUSDT 1d K线数据
+2025-05-23 17:15:41,025 - binance_data_collector - INFO - 成功获取DOTUSDT 1m周期K线数据，共100条
+2025-05-23 17:15:41,224 - binance_data_collector - INFO - 成功存储了100条K线数据
+2025-05-23 17:15:41,225 - crypto_tasks - INFO - 成功收集并存储了 100 条 DOTUSDT 1m K线数据
+2025-05-23 17:15:41,488 - binance_data_collector - INFO - 成功获取DOTUSDT 5m周期K线数据，共100条
+2025-05-23 17:15:41,705 - binance_data_collector - INFO - 成功存储了100条K线数据
+2025-05-23 17:15:41,707 - crypto_tasks - INFO - 成功收集并存储了 100 条 DOTUSDT 5m K线数据
+2025-05-23 17:15:42,098 - binance_data_collector - INFO - 成功获取DOTUSDT 1h周期K线数据，共380条
+2025-05-23 17:15:42,799 - binance_data_collector - INFO - 成功存储了380条K线数据
+2025-05-23 17:15:42,801 - crypto_tasks - INFO - 成功收集并存储了 380 条 DOTUSDT 1h K线数据
+2025-05-23 17:15:43,061 - binance_data_collector - INFO - 成功获取DOTUSDT 1d周期K线数据，共17条
+2025-05-23 17:15:43,128 - binance_data_collector - INFO - 成功存储了17条K线数据
+2025-05-23 17:15:43,130 - crypto_tasks - INFO - 成功收集并存储了 17 条 DOTUSDT 1d K线数据
+2025-05-23 17:15:43,395 - binance_data_collector - INFO - 成功获取FETUSDT 1m周期K线数据，共100条
+2025-05-23 17:15:43,610 - binance_data_collector - INFO - 成功存储了100条K线数据
+2025-05-23 17:15:43,613 - crypto_tasks - INFO - 成功收集并存储了 100 条 FETUSDT 1m K线数据
+2025-05-23 17:15:44,084 - binance_data_collector - INFO - 成功获取FETUSDT 5m周期K线数据，共100条
+2025-05-23 17:15:44,281 - binance_data_collector - INFO - 成功存储了100条K线数据
+2025-05-23 17:15:44,283 - crypto_tasks - INFO - 成功收集并存储了 100 条 FETUSDT 5m K线数据
+2025-05-23 17:15:44,568 - binance_data_collector - INFO - 成功获取FETUSDT 1h周期K线数据，共380条
+2025-05-23 17:15:45,214 - binance_data_collector - INFO - 成功存储了380条K线数据
+2025-05-23 17:15:45,216 - crypto_tasks - INFO - 成功收集并存储了 380 条 FETUSDT 1h K线数据
+2025-05-23 17:15:45,474 - binance_data_collector - INFO - 成功获取FETUSDT 1d周期K线数据，共17条
+2025-05-23 17:15:45,611 - binance_data_collector - INFO - 成功存储了17条K线数据
+2025-05-23 17:15:45,613 - crypto_tasks - INFO - 成功收集并存储了 17 条 FETUSDT 1d K线数据
+2025-05-23 17:15:46,087 - binance_data_collector - INFO - 成功获取TAOUSDT 1m周期K线数据，共100条
+2025-05-23 17:15:46,318 - binance_data_collector - INFO - 成功存储了100条K线数据
+2025-05-23 17:15:46,320 - crypto_tasks - INFO - 成功收集并存储了 100 条 TAOUSDT 1m K线数据
+2025-05-23 17:15:46,580 - binance_data_collector - INFO - 成功获取TAOUSDT 5m周期K线数据，共100条
+2025-05-23 17:15:46,813 - binance_data_collector - INFO - 成功存储了100条K线数据
+2025-05-23 17:15:46,815 - crypto_tasks - INFO - 成功收集并存储了 100 条 TAOUSDT 5m K线数据
+2025-05-23 17:15:47,629 - binance_data_collector - INFO - 成功获取TAOUSDT 1h周期K线数据，共380条
+2025-05-23 17:15:48,304 - binance_data_collector - INFO - 成功存储了380条K线数据
+2025-05-23 17:15:48,306 - crypto_tasks - INFO - 成功收集并存储了 380 条 TAOUSDT 1h K线数据
+2025-05-23 17:15:49,088 - binance_data_collector - INFO - 成功获取TAOUSDT 1d周期K线数据，共17条
+2025-05-23 17:15:49,169 - binance_data_collector - INFO - 成功存储了17条K线数据
+2025-05-23 17:15:49,171 - crypto_tasks - INFO - 成功收集并存储了 17 条 TAOUSDT 1d K线数据
+2025-05-23 17:15:49,640 - binance_data_collector - INFO - 成功获取INJUSDT 1m周期K线数据，共100条
+2025-05-23 17:15:49,886 - binance_data_collector - INFO - 成功存储了100条K线数据
+2025-05-23 17:15:49,887 - crypto_tasks - INFO - 成功收集并存储了 100 条 INJUSDT 1m K线数据
+2025-05-23 17:15:50,359 - binance_data_collector - INFO - 成功获取INJUSDT 5m周期K线数据，共100条
+2025-05-23 17:15:50,550 - binance_data_collector - INFO - 成功存储了100条K线数据
+2025-05-23 17:15:50,552 - crypto_tasks - INFO - 成功收集并存储了 100 条 INJUSDT 5m K线数据
+2025-05-23 17:15:51,156 - binance_data_collector - INFO - 成功获取INJUSDT 1h周期K线数据，共380条
+2025-05-23 17:15:51,852 - binance_data_collector - INFO - 成功存储了380条K线数据
+2025-05-23 17:15:51,858 - crypto_tasks - INFO - 成功收集并存储了 380 条 INJUSDT 1h K线数据
+2025-05-23 17:15:52,328 - binance_data_collector - INFO - 成功获取INJUSDT 1d周期K线数据，共17条
+2025-05-23 17:15:52,441 - binance_data_collector - INFO - 成功存储了17条K线数据
+2025-05-23 17:15:52,443 - crypto_tasks - INFO - 成功收集并存储了 17 条 INJUSDT 1d K线数据
+2025-05-23 17:15:52,444 - crypto_tasks - INFO - 开始汇总 2025-05-23 的加密货币数据...
+2025-05-23 17:15:52,447 - daily_summary_processor - INFO - 开始2025-05-23的加密货币每日数据汇总...
+2025-05-23 17:15:52,508 - daily_summary_processor - INFO - 成功存储/更新2025-05-23的每日汇总数据
+2025-05-23 17:15:52,510 - crypto_tasks - INFO - 成功汇总 2025-05-23 的加密货币数据
+2025-05-23 17:15:52,510 - crypto_tasks - INFO - 开始生成 2025-05-23 的加密货币交易策略...
+2025-05-23 17:15:52,511 - trading_strategy_ai - INFO - 开始为2025-05-23生成加密货币交易策略...
+2025-05-23 17:15:52,556 - trading_strategy_ai - INFO - 成功获取每日汇总数据ID 1
+2025-05-23 17:15:52,998 - trading_strategy_ai - INFO - 成功获取9个交易对的价格数据
+2025-05-23 17:15:52,998 - trading_strategy_ai - INFO - 发送数据到AI API...
+2025-05-23 17:15:52,998 - trading_strategy_ai - INFO - 使用API URL: https://aiproxy.bja.sealos.run/v1/chat/completions
+2025-05-23 17:15:52,999 - trading_strategy_ai - INFO - 正在发送请求到AI API，这可能需要一些时间...
+2025-05-23 17:17:53,049 - trading_strategy_ai - WARNING - API请求异常: HTTPSConnectionPool(host='aiproxy.bja.sealos.run', port=443): Read timed out. (read timeout=120)
+2025-05-23 17:17:53,050 - trading_strategy_ai - INFO - 第 1 次重试请求AI API...
+2025-05-23 17:19:02,076 - trading_strategy_ai - INFO - API响应状态码: 200
+2025-05-23 17:19:02,077 - trading_strategy_ai - INFO - API响应内容: {"choices":[{"finish_reason":"stop","index":0,"logprobs":null,"message":{"content":"### 1. BTC (BTCUSDT)\n1. **交易对**: BTCUSDT  \n2. **仓位类型**: LONG  \n3. **入场价格**: 111,000 USDT  \n4. **止损价格**: 110,500 USDT  \n5. **止盈价格**: 115,000 USDT  \n6. **仓位大小**: 20%  \n7. **杠杆倍数**: 5x  \n8. **理由**:  \n   - **市场情绪**: 市场情绪略微看涨，比特币突破110,000 USDT，创历史新高，显示出强劲的上升势头。  \n   - **技术面**: 价格在日内高点附近波动，短期均线（如MA10）呈上升趋势，RSI处于60-70区间，未进入超买区域。  \n   - **基本面**: 比特币作为市场领导者，其突破性上涨可能带动整个市场，且近期资金流入加密货币市场的趋势明显。\n\n---\n\n### 2. ETH (ETHUSDT)\n1. **交易对**: ETHUSDT  \n2. **仓位类型**: LONG  \n3. **入场价格**: 2,670 USDT  \n4. **止损价格**: 2,620 USDT  \n5. **止盈价格**: 2,800 USDT  \n6. **仓位大小**: 15%  \n7. **杠杆倍数**: 5x  \n8. **理由**:  \n   - **市场情绪**: 以太坊价格进入“关键区域”，且近期指标显示看涨信号，市场对其突破3,000 USDT的预期增强。  \n   - **技术面**: 价格在2,670 USDT附近波动，MACD显示金叉，且成交量有所增加，表明买盘强劲。  \n   - **基本面**: 以太坊生态持续发展，DeFi和稳定币发行等应用推动其需求增长，且近期资金流入以太坊基金的趋势明显。\n\n---\n\n### 3. SOL (SOLUSDT)\n1. **交易对**: SOLUSDT  \n2. **仓位类型**: NEUTRAL  \n3. **入场价格**: N/A  \n4. **止损价格**: N/A  \n5. **止盈价格**: N/A  \n6. **仓位大小**: 0%  \n7. **杠杆倍数**: N/A  \n8. **理由**:  \n   - **市场情绪**: Solana近期受到负面新闻影响（如游戏项目关闭和ETF延迟），市场情绪较为中性。  \n   - **技术面**: 价格在187 USDT附近波动，短期缺乏明确方向，RSI处于50附近，显示市场处于平衡状态。  \n   - **基本面**: 尽管Solana生态有创新（如Alpenglow提案），但短期不确定性较高，建议观望。\n\n---\n\n### 4. LINK (LINKUSDT)\n1. **交易对**: LINKUSDT  \n2. **仓位类型**: LONG  \n3. **入场价格**: 16.85 USDT  \n4. **止损价格**: 16.50 USDT  \n5. **止盈价格**: 18.00 USDT  \n6. **仓位大小**: 10%  \n7. **杠杆倍数**: 3x  \n8. **理由**:  \n   - **市场情绪**: Chainlink CCIP在Solana上线，市场对其跨链解决方案的关注度提升。  \n   - **技术面**: 价格在16.89 USDT附近波动，MACD显示潜在金叉，且成交量有所增加。  \n   - **基本面**: Chainlink作为预言机领域的领导者，其技术进展和应用扩展可能推动价格上涨。\n\n---\n\n### 5. DOGE (DOGEUSDT)\n1. **交易对**: DOGEUSDT  \n2. **仓位类型**: NEUTRAL  \n3. **入场价格**: N/A  \n4. **止损价格**: N/A  \n5. **止盈价格**: N/A  \n6. **仓位大小**: 0%  \n7. **杠杆倍数**: N/A  \n8. **理由**:  \n   - **市场情绪**: DOGE近期表现平淡，市场情绪中性。  \n   - **技术面**: 价格在0.246 USDT附近波动，短期缺乏明确方向，RSI处于50附近。  \n   - **基本面**: 缺乏重大新闻或催化剂，建议观望。\n\n---\n\n### 6. DOT (DOTUSDT)\n1. **交易对**: DOTUSDT  \n2. **仓位类型**: LONG  \n3. **入场价格**: 4.97 USDT  \n4. **止损价格**: 4.85 USDT  \n5. **止盈价格**: 5.20 USDT  \n6. **仓位大小**: 10%  \n7. **杠杆倍数**: 3x  \n8. **理由**:  \n   - **市场情绪**: Polkadot近期表现稳定，市场情绪略微看涨。  \n   - **技术面**: 价格在4.97 USDT附近波动，短期均线呈上升趋势，MACD显示潜在金叉。  \n   - **基本面**: Polkadot生态持续发展，跨链互操作性需求增加，可能推动价格上涨。\n\n---\n\n### 7. FET (FETUSDT)\n1. **交易对**: FETUSDT  \n2. **仓位类型**: LONG  \n3. **入场价格**: 0.973 USDT  \n4. **止损价格**: 0.950 USDT  \n5. **止盈价格**: 1.050 USDT  \n6. **仓位大小**: 5%  \n7. **杠杆倍数**: 3x  \n8. **理由**:  \n   - **市场情绪**: FET近期表现强劲，市场情绪看涨。  \n   - **技术面**: 价格在0.974 USDT附近波动，短期均线呈上升趋势，RSI处于60-70区间。  \n   - **基本面**: Fetch.ai作为AI与区块链结合的项目，近期技术进展和应用扩展可能推动价格上涨。\n\n---\n\n### 8. TAO (TAOUSDT)\n1. **交易对**: TAOUSDT  \n2. **仓位类型**: NEUTRAL  \n3. **入场价格**: N/A  \n4. **止损价格**: N/A  \n5. **止盈价格**: N/A  \n6. **仓位大小**: 0%  \n7. **杠杆倍数**: N/A  \n8. **理由**:  \n   - **市场情绪**: TAO近期表现疲软，市场情绪中性。  \n   - **技术面**: 价格在466 USDT附近波动，短期缺乏明确方向，RSI处于50附近。  \n   - **基本面**: 缺乏重大新闻或催化剂，建议观望。\n\n---\n\n### 9. INJ (INJUSDT)\n1. **交易对**: INJUSDT  \n2. **仓位类型**: LONG  \n3. **入场价格**: 14.60 USDT  \n4. **止损价格**: 14.30 USDT  \n5. **止盈价格**: 15.50 USDT  \n6. **仓位大小**: 5%  \n7. **杠杆倍数**: 3x  \n8. **理由**:  \n   - **市场情绪**: INJ近期表现强劲，市场情绪看涨。  \n   - **技术面**: 价格在14.63 USDT附近波动，短期均线呈上升趋势，MACD显示潜在金叉。  \n   - **基本面**: Injective Protocol作为去中心化衍生品交易平台，近期技术进展和应用扩展可能推动价格上涨。\n\n---\n\n### 总结\n在当前略微看涨的市场情绪下，建议重点关注BTC、ETH、LINK、DOT和INJ，这些资产具备较强的技术面和基本面支撑。对于SOL、DOGE和TAO，由于短期不确定性较高，建议保持中性或观望态度。仓位分配应根据个人风险承受能力调整，建议总仓位控制在50%-60%以内，并合理使用杠杆以控制风险。","role":"assistant"}}],"created":1747991943,"id":"0217479918796308c2d198b764d1ac22003a2340bc4a707da2529","model":"deepseek-chat","service_tier":"default","object":"chat.completion","usage":{"completion_tokens":1634,"prompt_tokens":2813,"total_tokens":4447,"prompt_tokens_details":{"cached_tokens":0},"completion_tokens_details":{"reasoning_tokens":0}}}
+2025-05-23 17:19:02,082 - trading_strategy_ai - INFO - 成功收到AI响应
+2025-05-23 17:19:02,083 - trading_strategy_ai - INFO - 成功提取总结部分
+2025-05-23 17:19:02,083 - trading_strategy_ai - WARNING - AI响应格式不符合预期，尝试其他分割方法
+2025-05-23 17:19:02,084 - trading_strategy_ai - INFO - 成功解析BTCUSDT的交易策略
+2025-05-23 17:19:02,085 - trading_strategy_ai - INFO - 成功解析ETHUSDT的交易策略
+2025-05-23 17:19:02,086 - trading_strategy_ai - INFO - 成功解析SOLUSDT的交易策略
+2025-05-23 17:19:02,087 - trading_strategy_ai - INFO - 成功解析LINKUSDT的交易策略
+2025-05-23 17:19:02,087 - trading_strategy_ai - INFO - 成功解析DOGEUSDT的交易策略
+2025-05-23 17:19:02,088 - trading_strategy_ai - INFO - 成功解析DOTUSDT的交易策略
+2025-05-23 17:19:02,088 - trading_strategy_ai - INFO - 成功解析FETUSDT的交易策略
+2025-05-23 17:19:02,088 - trading_strategy_ai - INFO - 成功解析TAOUSDT的交易策略
+2025-05-23 17:19:02,089 - trading_strategy_ai - INFO - 成功解析INJUSDT的交易策略
+2025-05-23 17:19:02,205 - trading_strategy_ai - INFO - 成功存储交易策略总结
+2025-05-23 17:19:02,377 - trading_strategy_ai - INFO - 成功存储了9个交易策略
+2025-05-23 17:19:02,380 - crypto_tasks - INFO - 成功生成 2025-05-23 的加密货币交易策略
+2025-05-23 17:19:02,380 - crypto_tasks - INFO - 成功完成 2025-05-23 的完整加密货币工作流程
+2025-05-23 17:19:02,381 - crypto_trading - INFO - 任务 full_workflow 成功完成

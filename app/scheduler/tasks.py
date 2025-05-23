@@ -131,12 +131,16 @@ def generate_crypto_trading_strategy(target_date_str: Optional[str] = None, trad
         config = load_config()
         db_config = get_db_config(config)
 
+        # 获取AI模型名称，如果配置中没有，则使用默认值
+        ai_model_name = getattr(config, "AI_MODEL_NAME", "gpt-3.5-turbo")
+
         success = generate_trading_strategy(
             db_config=db_config,
             openai_api_key=config.OPENAI_API_KEY,
             sealos_api_url=config.SEALOS_API_URL,
             target_date_str=target_date_str,
-            trading_pairs=trading_pairs
+            trading_pairs=trading_pairs,
+            ai_model_name=ai_model_name
         )
         if success:
             logger.info(f"成功生成 {target_date_str} 的加密货币交易策略")

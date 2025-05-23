@@ -9,7 +9,15 @@ import sys
 import json
 import datetime
 import logging
+import decimal
 from typing import Dict, Any, List, Optional
+
+# 自定义JSON编码器，处理Decimal类型
+class DecimalEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, decimal.Decimal):
+            return float(obj)
+        return super(DecimalEncoder, self).default(obj)
 
 # 确保app目录在Python路径中
 APP_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -24,26 +32,26 @@ logger = logging.getLogger('daily_summary_processor')
 def calculate_market_sentiment(topics_data: List[Dict[str, Any]]) -> str:
     """
     根据热点话题的情感分析结果计算整体市场情绪
-    
+
     Args:
         topics_data (List[Dict[str, Any]]): 热点话题数据列表
-        
+
     Returns:
         str: 市场情绪指标 (Bullish, Bearish, Neutral)
     """
     if not topics_data:
         return "Neutral"
-    
+
     sentiment_counts = {"positive": 0, "negative": 0, "neutral": 0}
-    
+
     for topic in topics_data:
         sentiment = topic.get("sentiment", "neutral")
         sentiment_counts[sentiment] += 1
-    
+
     total = len(topics_data)
     positive_ratio = sentiment_counts["positive"] / total
     negative_ratio = sentiment_counts["negative"] / total
-    
+
     if positive_ratio > 0.6:
         return "Bullish"
     elif negative_ratio > 0.6:
@@ -58,11 +66,11 @@ def calculate_market_sentiment(topics_data: List[Dict[str, Any]]) -> str:
 def process_and_store_crypto_daily_summary(db_config: Dict[str, Any], target_date_str: Optional[str] = None) -> bool:
     """
     从hot_topics和market_fund_flows获取每日数据，汇总后存储到daily_summary表
-    
+
     Args:
         db_config (Dict[str, Any]): 数据库配置
         target_date_str (Optional[str]): 目标日期，格式为'YYYY-MM-DD'，默认为今天
-        
+
     Returns:
         bool: 操作是否成功
     """
@@ -74,11 +82,11 @@ def process_and_store_crypto_daily_summary(db_config: Dict[str, Any], target_dat
             return False
     else:
         target_date = datetime.date.today()
-    
+
     logger.info(f"开始{target_date.strftime('%Y-%m-%d')}的加密货币每日数据汇总...")
-    
+
     db_manager = DatabaseManager(db_config)
-    
+
     try:
         # 使用数据库管理器的上下文管理器
         with db_manager.get_connection(dictionary=True) as (connection, cursor):
@@ -90,7 +98,7 @@ def process_and_store_crypto_daily_summary(db_config: Dict[str, Any], target_dat
             """
             cursor.execute(query_topics, {"target_date": target_date.strftime("%Y-%m-%d")})
             topics = cursor.fetchall()
-            
+
             if topics:
                 topic_details = []
                 for t in topics:
@@ -99,43 +107,43 @@ def process_and_store_crypto_daily_summary(db_config: Dict[str, Any], target_dat
                         sentiment_emoji = "🔥"
                     elif t.get('sentiment') == 'negative':
                         sentiment_emoji = "❄️"
-                    
+
                     if t.get('content_summary'):
                         topic_details.append(f"{sentiment_emoji} {t['title']} ({t['source']}): {t['content_summary']}")
                     else:
                         topic_details.append(f"{sentiment_emoji} {t['title']} ({t['source']})")
-                
+
                 aggregated_hot_topics_summary = "Today's key crypto topics: " + "; ".join(topic_details)
             else:
                 aggregated_hot_topics_summary = "No specific crypto hot topics found for today in the database."
-            
+
             # 2. 获取并汇总当日市场资金流向
             query_flows = """
-            SELECT crypto_symbol, inflow_amount, change_rate, volume_24h, funding_rate, open_interest 
+            SELECT crypto_symbol, inflow_amount, change_rate, volume_24h, funding_rate, open_interest
             FROM market_fund_flows
             WHERE DATE(retrieved_at) = %(target_date)s
             ORDER BY volume_24h DESC
             """
             cursor.execute(query_flows, {"target_date": target_date.strftime("%Y-%m-%d")})
             flows = cursor.fetchall()
-            
+
             if flows:
                 market_details = []
                 key_market_indicators = {}
-                
+
                 for f in flows:
                     crypto = f['crypto_symbol']
                     change = f.get('change_rate', 0)
                     volume = f.get('volume_24h', 0)
                     funding = f.get('funding_rate', 0)
-                    
+
                     # 格式化数字
                     change_str = f"{change:.2f}%" if change is not None else "N/A"
                     volume_str = f"{volume:.2f}" if volume is not None else "N/A"
                     funding_str = f"{funding*100:.4f}%" if funding is not None else "N/A"
-                    
+
                     market_details.append(f"{crypto}: Change {change_str}, Vol {volume_str}, Funding {funding_str}")
-                    
+
                     # 存储关键市场指标
                     key_market_indicators[crypto] = {
                         "change_rate": change,
@@ -143,15 +151,15 @@ def process_and_store_crypto_daily_summary(db_config: Dict[str, Any], target_dat
                         "funding_rate": funding,
                         "open_interest": f.get('open_interest', 0)
                     }
-                
+
                 aggregated_market_summary = f"Crypto market overview: {'; '.join(market_details)}"
             else:
                 aggregated_market_summary = "No specific crypto market data found for today in the database."
                 key_market_indicators = {}
-            
+
             # 3. 计算市场情绪指标
             market_sentiment_indicator = calculate_market_sentiment(topics)
-            
+
             # 4. 存储汇总数据到daily_summary表
             insert_summary_sql = ("""
             INSERT INTO daily_summary
@@ -164,20 +172,20 @@ def process_and_store_crypto_daily_summary(db_config: Dict[str, Any], target_dat
             key_market_indicators = VALUES(key_market_indicators),
             created_at = CURRENT_TIMESTAMP
             """)
-            
+
             summary_data = {
                 "date": target_date.strftime("%Y-%m-%d"),
                 "topics_summary": aggregated_hot_topics_summary,
                 "market_summary": aggregated_market_summary,
                 "sentiment": market_sentiment_indicator,
-                "market_indicators": json.dumps(key_market_indicators)
+                "market_indicators": json.dumps(key_market_indicators, cls=DecimalEncoder)
             }
-            
+
             cursor.execute(insert_summary_sql, summary_data)
             connection.commit()
             logger.info(f"成功存储/更新{target_date.strftime('%Y-%m-%d')}的每日汇总数据")
             return True
-    
+
     except Exception as err:
         logger.error(f"每日汇总过程中数据库错误: {err}")
         return False
@@ -185,13 +193,13 @@ def process_and_store_crypto_daily_summary(db_config: Dict[str, Any], target_dat
 # 如果直接运行此脚本，执行测试
 if __name__ == "__main__":
     print("执行daily_summary_processor.py作为独立脚本（用于测试）")
-    
+
     # 配置日志
     logging.basicConfig(
         level=logging.INFO,
         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
     )
-    
+
     # 使用统一的配置加载方式
     try:
         from app.utils import load_config, get_db_config
@@ -209,7 +217,7 @@ if __name__ == "__main__":
             "DB_PASSWORD": "your_db_password",
             "DB_NAME": "crypto_trading"
         }
-    
+
     if db_config["DB_USER"] == "your_db_user":
         print("警告: 使用占位符数据库凭据进行直接脚本执行")
         print("如果要使用真实数据进行测试，请配置它们")

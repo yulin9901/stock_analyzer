@@ -62,7 +62,7 @@ def run_task(task_name, date_str=None, trading_pairs=None):
 
     # 默认交易对
     if trading_pairs is None:
-        trading_pairs = ["BTCUSDT", "ETHUSDT", "SOLUSDT"]
+        trading_pairs = ["BTCUSDT", "ETHUSDT", "SOLUSDT", "LINKUSDT", "DOGEUSDT", "DOTUSDT", "FETUSDT", "TAOUSDT", "INJUSDT"]
 
     # 当前日期
     today = date_str or datetime.date.today().strftime("%Y-%m-%d")
