@@ -1,9 +1,6 @@
 # Configuration for Crypto Trading Strategy System
 # Copy this file to config.py and fill in your details.
 
-# TianAPI Key for fetching hot topics (Chinese financial news)
-TIANAPI_KEY = "YOUR_TIANAPI_KEY_HERE"
-
 # OpenAI API Key for AI decisions (via Sealos AI Proxy)
 OPENAI_API_KEY = "YOUR_OPENAI_API_KEY_HERE"
 SEALOS_API_URL = "https://api.sealos.run/openai/v1/chat/completions"  # Sealos AI Proxy URL
@@ -21,8 +18,9 @@ DB_PASSWORD = "your_db_password"
 DB_NAME = "crypto_trading"  # Changed from stock_analysis
 
 # News API Sources
-COINDESK_API_KEY = "YOUR_COINDESK_API_KEY_HERE"  # If available
-COINTELEGRAPH_API_KEY = "YOUR_COINTELEGRAPH_API_KEY_HERE"  # If available
+CRYPTOPANIC_API_KEY = "YOUR_CRYPTOPANIC_API_KEY_HERE"  # CryptoPanic API密钥
+COINMARKETCAL_API_KEY = "YOUR_COINMARKETCAL_API_KEY_HERE"  # CoinMarketCal API密钥
+COINMARKETCAL_X_API_KEY = "YOUR_COINMARKETCAL_X_API_KEY_HERE"  # CoinMarketCal X-API-KEY
 
 # 定时任务配置
 # 加密货币市场24/7运行，无需考虑交易日

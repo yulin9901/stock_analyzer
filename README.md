@@ -81,7 +81,7 @@ pip install -r requirements.txt
 
 5. **数据库设置**:
    * 确保MySQL服务器正在运行
-   * 创建数据库（例如：`crypto_trading`）
+   * 创建数据库（例如：`stock_analysis`）
    * 执行`models/database_schema.sql`脚本创建必要的表:
 
 ```bash
@@ -95,7 +95,7 @@ mysql -u 你的MySQL用户名 -p 你的数据库名 < models/database_schema.sql
 ```bash
 cp config.py.template config.py
 ```
-   * 编辑`config.py`并填入您的API密钥和数据库配置，特别是Binance API密钥和OpenAI API密钥
+   * 编辑`config.py`并填入您的API密钥和数据库配置，特别是Binance API密钥、CryptoPanic API密钥、CoinMarketCal API密钥和OpenAI API密钥
 
 ## 运行方式
 
@@ -140,7 +140,7 @@ python scripts/install_service.py --install
 
 1. **数据采集**:
    * 通过Binance API获取加密货币实时价格、K线数据、资金费率等
-   * 收集加密货币相关热点新闻和社交媒体数据
+   * 通过CryptoPanic和CoinMarketCal收集加密货币相关热点新闻和事件数据
    * 支持多种时间周期的K线数据（1分钟、5分钟、1小时、1天）
 
 2. **数据处理**:
@@ -162,7 +162,7 @@ python scripts/install_service.py --install
 * **API密钥**: 确保您在`config/config.py`中的Binance API密钥和OpenAI API密钥正确有效
 * **测试网络**: 默认使用Binance测试网络，如需使用实盘，请将`BINANCE_TESTNET`设置为`False`
 * **AI模拟**: 如果您的配置中`OPENAI_API_KEY`是占位符或为空，系统将使用模拟响应
-* **数据源可靠性**: 数据的准确性和可用性取决于外部API（Binance、TianAPI等）
+* **数据源可靠性**: 数据的准确性和可用性取决于外部API（Binance、CryptoPanic、CoinMarketCal等）
 * **决策逻辑**: 生成的交易策略仅供参考，不构成投资建议
 * **自动交易**: 系统默认不执行实际交易，如需启用自动交易，请将`ENABLE_AUTO_TRADING`设置为`True`（谨慎使用）
 

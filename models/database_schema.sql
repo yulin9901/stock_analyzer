@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS hot_topics (
     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '资讯发布时间或抓取时间',
     source VARCHAR(255) COMMENT '资讯来源, 例如：CoinDesk、Cointelegraph、Twitter等',
     title TEXT NOT NULL COMMENT '资讯标题',
-    url VARCHAR(1024) UNIQUE COMMENT '资讯原始链接',
+    url VARCHAR(255) UNIQUE COMMENT '资讯原始链接',
     content_summary TEXT COMMENT '资讯内容摘要',
     sentiment ENUM('positive', 'negative', 'neutral') COMMENT '情感分析结果',
     retrieved_at DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '数据入库时间'

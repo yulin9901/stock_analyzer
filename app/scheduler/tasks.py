@@ -8,7 +8,7 @@ import os
 import sys
 import datetime
 import logging
-from typing import List, Dict, Any, Optional
+from typing import List, Optional
 
 # 确保app目录在Python路径中
 APP_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -38,7 +38,7 @@ def collect_crypto_news():
         config = load_config()
         db_config = get_db_config(config)
 
-        news_data = fetch_crypto_hot_topics(api_key=config.TIANAPI_KEY)
+        news_data = fetch_crypto_hot_topics(config)
         if news_data:
             inserted_count = store_crypto_news_data(db_config=db_config, news_data=news_data)
             logger.info(f"成功收集并存储了 {inserted_count} 条加密货币热点新闻")

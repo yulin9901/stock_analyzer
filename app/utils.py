@@ -27,8 +27,12 @@ def load_config():
         spec.loader.exec_module(app_config)
 
         # Check for placeholder values and issue warnings
-        if getattr(app_config, "TIANAPI_KEY", "") == "YOUR_TIANAPI_KEY_HERE":
-            print("Warning: TIANAPI_KEY is a placeholder in config.py. TianAPI calls may fail or use a demo key.")
+        if getattr(app_config, "CRYPTOPANIC_API_KEY", "") == "YOUR_CRYPTOPANIC_API_KEY_HERE":
+            print("Warning: CRYPTOPANIC_API_KEY is a placeholder in config.py. CryptoPanic API calls may fail.")
+        if getattr(app_config, "COINMARKETCAL_API_KEY", "") == "YOUR_COINMARKETCAL_API_KEY_HERE":
+            print("Warning: COINMARKETCAL_API_KEY is a placeholder in config.py. CoinMarketCal API calls may fail.")
+        if getattr(app_config, "COINMARKETCAL_X_API_KEY", "") == "YOUR_COINMARKETCAL_X_API_KEY_HERE":
+            print("Warning: COINMARKETCAL_X_API_KEY is a placeholder in config.py. CoinMarketCal API calls may fail.")
         if getattr(app_config, "OPENAI_API_KEY", "") == "YOUR_OPENAI_API_KEY_HERE":
             print("Warning: OPENAI_API_KEY is a placeholder in config.py. ChatGPT calls will be simulated or fail.")
         if getattr(app_config, "DB_USER", "") == "your_db_user":
@@ -55,7 +59,13 @@ if __name__ == "__main__":
         cfg = load_config()
         print("Configuration loaded successfully.")
         print(f"DB Host: {cfg.DB_HOST}")
-        print(f"TianAPI Key: {'*' * len(cfg.TIANAPI_KEY) if cfg.TIANAPI_KEY != 'YOUR_TIANAPI_KEY_HERE' else cfg.TIANAPI_KEY}")
+
+        # 打印API密钥状态
+        if hasattr(cfg, "CRYPTOPANIC_API_KEY"):
+            print(f"CryptoPanic API Key: {'*' * 8 if cfg.CRYPTOPANIC_API_KEY != 'YOUR_CRYPTOPANIC_API_KEY_HERE' else 'NOT CONFIGURED'}")
+        if hasattr(cfg, "COINMARKETCAL_API_KEY"):
+            print(f"CoinMarketCal API Key: {'*' * 8 if cfg.COINMARKETCAL_API_KEY != 'YOUR_COINMARKETCAL_API_KEY_HERE' else 'NOT CONFIGURED'}")
+
         db_params = get_db_config(cfg)
         print(f"DB Params for modules: {db_params}")
     except Exception as e:
